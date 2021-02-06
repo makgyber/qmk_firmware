@@ -54,8 +54,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_FN] = LAYOUT( /* Function Layer, primary alternative layer featuring numpad on right hand,
                                      cursor keys on left hand, and all symbols*/
-    KC_ESC,  _______, KC_MS_U, _______, KC_GRV,       KC_BSLS, KC_WH_L, KC_UP, KC_WH_R, KC_BSPC,
-    KC_TAB,  KC_MS_L, KC_MS_D, KC_MS_R, KC_LBRC,       KC_RBRC, KC_LEFT, KC_DOWN, KC_RIGHT, KC_RCTL,
+    KC_ESC,  _______, KC_UP, _______, KC_GRV,       KC_BSLS, KC_WH_L, KC_MS_U, KC_WH_R, KC_BSPC,
+    KC_TAB, KC_LEFT, KC_DOWN, KC_RIGHT,  KC_LBRC,       KC_RBRC, KC_MS_L, KC_MS_D, KC_MS_R, KC_RCTL,
     KC_APP,  KC_MPRV, KC_MPLY, KC_MSTP, KC_MINS,       KC_EQL, KC_BTN1, KC_BTN2, KC_BTN3,  KC_ENT,
              KC_VOLU, _______, _______, _______,       _______, _______, _______, _______,
              KC_VOLD, _______, _______, _______,       _______, _______, _______, _______
