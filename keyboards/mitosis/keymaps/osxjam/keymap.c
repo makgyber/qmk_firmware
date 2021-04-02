@@ -10,9 +10,9 @@ extern float default_layer_songs[][16][2];
 enum mitosis_layers
   {
     _xQ, // qwerty
-    _xC, // colemak
-    _xD, // dvorak
-    _xW, // workman
+    // _xC, // colemak
+    // _xD, // dvorak
+    // _xW, // workman
     _xS, // symbols
     _xN, // numbers
     _xF  // functions
@@ -50,26 +50,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_A,    KC_S,       KC_D,    KC_F,    KC_G,           KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,
       KC_Z,    KC_X,       KC_C,    KC_V,    KC_B,           KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_QUOT,
       /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______,
-      /*,       KC_UNDS, KC_LCTL, MO(_xS), KC_LGUI,        KC_BSPC,  MO(_xN), KC_RCTL, KC_RGUI,*/
-      /*,      */ KC_TAB, KC_LALT, MO(_xS), RGUI_T(KC_ENT), RSFT_T(KC_SPC), MO(_xN), KC_RCTL, KC_BSPC),
-  [_xC] = LAYOUT(
-      KC_Q,    KC_W,       KC_F,    KC_P,    KC_G,           KC_J,    KC_L,    KC_U,    KC_Y,     KC_SCLN,
-      KC_A,    KC_R,       KC_S,    KC_T,    KC_D,           KC_H,    KC_N,    KC_E,    KC_I,     KC_O,
-      KC_Z,    KC_X,       KC_C,    KC_V,    KC_B,           KC_K,    KC_M,    KC_COMM, KC_DOT,   KC_QUOT,
-      /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______,
-      /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______),
-  [_xD] = LAYOUT(
-      KC_QUOT, KC_COMM,    KC_DOT,  KC_P,    KC_Y,           KC_F,    KC_G,    KC_C,    KC_R,     KC_L,
-      KC_A,    KC_O,       KC_E,    KC_U,    KC_I,           KC_D,    KC_H,    KC_T,    KC_N,     KC_S,
-      KC_SCLN, KC_Q,       KC_J,    KC_K,    KC_X,           KC_B,    KC_M,    KC_W,    KC_V,     KC_Z,
-      /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______,
-      /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______),
-  [_xW] = LAYOUT(
-      KC_Q,    KC_D,       KC_R,    KC_W,    KC_B,           KC_J,    KC_F,    KC_U,    KC_P,     KC_SCLN,
-      KC_A,    KC_S,       KC_H,    KC_T,    KC_G,           KC_Y,    KC_N,    KC_E,    KC_O,     KC_I,
-      KC_Z,    KC_X,       KC_M,    KC_C,    KC_V,           KC_K,    KC_L,    KC_COMM, KC_DOT,   KC_QUOT,
-      /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______,
-      /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______),
+      /*,      */ _______, KC_LALT, MO(_xS), KC_SPC,        KC_RSFT,  MO(_xN), KC_RCTL, _______),
+  // [_xC] = LAYOUT(
+  //     KC_Q,    KC_W,       KC_F,    KC_P,    KC_G,           KC_J,    KC_L,    KC_U,    KC_Y,     KC_SCLN,
+  //     KC_A,    KC_R,       KC_S,    KC_T,    KC_D,           KC_H,    KC_N,    KC_E,    KC_I,     KC_O,
+  //     KC_Z,    KC_X,       KC_C,    KC_V,    KC_B,           KC_K,    KC_M,    KC_COMM, KC_DOT,   KC_QUOT,
+  //     /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______,
+  //     /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______),
+  // [_xD] = LAYOUT(
+  //     KC_QUOT, KC_COMM,    KC_DOT,  KC_P,    KC_Y,           KC_F,    KC_G,    KC_C,    KC_R,     KC_L,
+  //     KC_A,    KC_O,       KC_E,    KC_U,    KC_I,           KC_D,    KC_H,    KC_T,    KC_N,     KC_S,
+  //     KC_SCLN, KC_Q,       KC_J,    KC_K,    KC_X,           KC_B,    KC_M,    KC_W,    KC_V,     KC_Z,
+  //     /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______,
+  //     /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______),
+  // [_xW] = LAYOUT(
+  //     KC_Q,    KC_D,       KC_R,    KC_W,    KC_B,           KC_J,    KC_F,    KC_U,    KC_P,     KC_SCLN,
+  //     KC_A,    KC_S,       KC_H,    KC_T,    KC_G,           KC_Y,    KC_N,    KC_E,    KC_O,     KC_I,
+  //     KC_Z,    KC_X,       KC_M,    KC_C,    KC_V,           KC_K,    KC_L,    KC_COMM, KC_DOT,   KC_QUOT,
+  //     /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______,
+  //     /*,      */ _______, _______, _______, _______,        _______, _______, _______, _______),
   [_xS] = LAYOUT(
       KC_ESC,  KC_GRV ,    KC_UP,   KC_EQL , KC_TILD,        KC_PLUS, KC_CIRC, KC_AMPR, KC_PERC,  KC_MINS,
       _______, KC_LEFT,    KC_DOWN, KC_RGHT, _______,        KC_PIPE, KC_AT,   KC_DLR,  KC_HASH,  KC_ENT,
@@ -91,9 +90,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 const bool defaultlayers[] = {
   [_xQ] = true,
-  [_xC] = true,
-  [_xD] = true,
-  [_xW] = true,
+  // [_xC] = true,
+  // [_xD] = true,
+  // [_xW] = true,
   [_xS] = false,
   [_xN] = false,
   [_xF] = false,
