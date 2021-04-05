@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_A,        KC_S,    KC_D,    KC_F,    KC_G,         KC_H,      KC_J,    KC_K,    KC_L,    KC_SCLN,
     KC_Z,        KC_X,    KC_C,    KC_V,    KC_B,         KC_N,      KC_M,    KC_COMM, KC_DOT,  KC_ENT,
               _______, _______,_______, _______,          _______, _______, _______, _______,
-              _______, KC_LALT,GUI_T(KC_ENT), LT(_NUM, KC_SPC),   LT(_FN, KC_SPC),SFT_T(KC_SPC),  KC_RCTL, _______
+              _______, KC_LALT,LT(_NUM, KC_SPC),GUI_T(KC_ENT),    SFT_T(KC_SPC),LT(_FN, KC_SPC),  KC_RCTL, _______
   ),
 
   [_NUM] = LAYOUT( /* Number layout along the home row for maximum speed*/
