@@ -1,2 +1,2 @@
 #pragma once
-#define AUTO_SHIFT_TIMEOUT 125
+#define AUTO_SHIFT_TIMEOUT 135

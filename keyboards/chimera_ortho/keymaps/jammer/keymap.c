@@ -24,7 +24,7 @@ enum chimera_ortho_layers {
 #define KC_NPLBR LT(_NUMPAD, KC_LBRC)
 #define KC_MINLH LT(_CAPS, KC_MINS)
 #define KC_SFSP MT(MOD_RSFT, KC_SPC)
-#define KC_SPFN LT(_NUMPAD, KC_SPC)
+#define KC_SPFN LT(_NUMPAD, KC_BSPC)
 #define KC_SPCTL MT(MOD_LCTL, KC_SPC)
 #define KC_GENT MT(MOD_LGUI, KC_ENT)
 #define KC_GUIF MT(MOD_LGUI, KC_F)
