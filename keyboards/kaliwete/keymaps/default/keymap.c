@@ -26,34 +26,42 @@ enum layer_names {
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
     QMKBEST = SAFE_RANGE,
-    QMKURL
+    HOMER
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
+
+    // [_BLANK] = LAYOUT(
+    //         _______,  _______, _______, _______, _______, _______, 
+    //         _______,  _______, _______, _______, _______, _______,
+    //         _______,  _______, _______, _______, _______, _______,
+    //              _______,      _______, _______, _______, _______
+    //     ),
+
     [_BASE] = LAYOUT(
-        KC_ESC, KC_F, KC_D, KC_N, KC_I, KC_G,
-        KC_BSPC, KC_S, KC_T, KC_H, KC_E, KC_O,
-        KC_LSFT, KC_C, KC_W, KC_R, KC_A, LT(_NUM, KC_U),
-          MO(_ALFA),  KC_LCTL, KC_LALT, LT(_NAV, KC_SPC), GUI_T(KC_ENT)
+        KC_TAB,     KC_F,   KC_D,  KC_N , KC_I,    KC_G,
+        KC_ENT,    KC_S,  KC_T ,   KC_H,   KC_E,   KC_O,
+        KC_LSFT,    KC_C, KC_W, KC_R, KC_A, KC_U,
+               LT(_NAV, KC_ENT),      KC_LCTL,   KC_LGUI,   LT(_NUM, KC_BSPC), LT(_ALFA, KC_SPC)
     ),
     [_ALFA] = LAYOUT(
         KC_ESC, KC_J, KC_K, KC_M, KC_QUOT, KC_MINUS,
-        KC_BSPC, KC_Y, KC_P, KC_L, KC_DOT, KC_Q,
+        KC_SCLN, KC_Y, KC_P, KC_L,  KC_DOT, KC_Q,  
         KC_LSFT, KC_X, KC_B, KC_V, KC_COMMA, KC_Z,
           _______,  _______, _______, _______, _______
     ),
     [_NUM] = LAYOUT(
-        KC_BSLS, KC_1, KC_2, KC_3, KC_4, KC_5,
-        KC_EQL, KC_6, KC_7, KC_8, KC_9, KC_0,
-        G(KC_Z), G(KC_X), G(KC_C), G(KC_V), G(KC_A), G(KC_S),
-          KC_LSFT,  _______, _______, _______, _______
+        KC_BSLS, KC_6, KC_7, KC_8, KC_9, KC_0,
+        KC_EQL, KC_1, KC_2, KC_3, KC_4, KC_5 , 
+        KC_LSFT, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), G(KC_S),
+          HOMER,  _______, _______, _______, _______
     ),
     [_NAV] = LAYOUT(
         KC_ESC, KC_GRV,      KC_M,       KC_UP,      KC_QUOT,    KC_BSLS,
         KC_TAB, KC_MINS,     KC_LEFT,    KC_DOWN,    KC_RIGHT,   KC_EQL,
         KC_LSFT, KC_LBRC,  C(KC_LEFT), C(KC_UP), C(KC_RIGHT), KC_RBRC,
-          _______,  _______, _______, _______, _______
+          _______,  _______, _______, _______, KC_LSFT
     )
 };
 
@@ -67,10 +75,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // when keycode QMKBEST is released
             }
             break;
-        case QMKURL:
+        case HOMER:
             if (record->event.pressed) {
                 // when keycode QMKURL is pressed
-                SEND_STRING("https://qmk.fm/\n");
+                SEND_STRING("~/");
             } else {
                 // when keycode QMKURL is released
             }
@@ -92,3 +100,24 @@ bool led_update_user(led_t led_state) {
     return true;
 }
 */
+
+void matrix_scan_user(void) {
+    uint8_t layer = biton32(layer_state);
+
+    switch (layer) {
+    	case _BASE:
+    		set_led_off;
+    		break;
+        case _ALFA:
+            set_led_blue;
+            break;
+        case _NUM:
+            set_led_red;
+            break;
+        case _NAV:
+        	set_led_green;
+        	break;
+        default:
+            break;
+    }
+};

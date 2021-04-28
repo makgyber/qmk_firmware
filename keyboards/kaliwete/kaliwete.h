@@ -18,6 +18,22 @@
 
 #include "quantum.h"
 
+#define red_led_off   PORTF |= (1<<5)
+#define red_led_on    PORTF &= ~(1<<5)
+#define blu_led_off   PORTF |= (1<<4)
+#define blu_led_on    PORTF &= ~(1<<4)
+#define grn_led_off   PORTD |= (1<<1)
+#define grn_led_on    PORTD &= ~(1<<1)
+
+#define set_led_off     red_led_off; grn_led_off; blu_led_off
+#define set_led_red     red_led_on;  grn_led_off; blu_led_off
+#define set_led_blue    red_led_off; grn_led_off; blu_led_on
+#define set_led_green   red_led_off; grn_led_on;  blu_led_off
+#define set_led_yellow  red_led_on;  grn_led_on;  blu_led_off
+#define set_led_magenta red_led_on;  grn_led_off; blu_led_on
+#define set_led_cyan    red_led_off; grn_led_on;  blu_led_on
+#define set_led_white   red_led_on;  grn_led_on;  blu_led_on
+
 /* This is a shortcut to help you visually see your layout.
  *
  * The first section contains all of the arguments representing the physical
@@ -35,6 +51,6 @@
 { \
     { k00, k01, k02, k03, k04, k05 }, \
     { k10, k11, k12, k13, k14, k15 }, \
-    { k20, k12, k22, k23, k24, k25 }, \
-    { KC_NO,  k30,   k31, k32, k33, k34 }  \
+    { k20, k21, k22, k23, k24, k25 }, \
+    { KC_NO, k30, k31, k32, k33, k34 }  \
 }

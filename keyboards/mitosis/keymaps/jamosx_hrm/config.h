@@ -24,3 +24,5 @@
 #define SFT_K RSFT_T(KC_K)
 #define ALT_L LALT_T(KC_L)
 #define CTL_SCLN RCTL_T(KC_SCLN)
+
+#define COMBO_COUNT 1
