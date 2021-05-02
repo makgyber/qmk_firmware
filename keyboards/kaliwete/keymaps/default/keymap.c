@@ -40,27 +40,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //     ),
 
     [_BASE] = LAYOUT(
-        KC_TAB,     KC_F,   KC_D,  KC_N , KC_I,    KC_G,
-        KC_ENT,    KC_S,  KC_T ,   KC_H,   KC_E,   KC_O,
-        KC_LSFT,    KC_C, KC_W, KC_R, KC_A, KC_U,
-               LT(_NAV, KC_ENT),      KC_LCTL,   KC_LGUI,   LT(_NUM, KC_BSPC), LT(_ALFA, KC_SPC)
+        _______,KC_F,  KC_D, KC_I, KC_N, KC_G, 
+        OSL(_ALFA),KC_A,  KC_T, KC_H, KC_E, KC_S,
+        OSL(_NUM),KC_C,  KC_W, KC_R, KC_O,  KC_U, 
+               LT(_NAV, KC_ENT),      KC_LCTL,   KC_LGUI,   GUI_T(KC_BSPC), LSFT_T(KC_SPC)
     ),
     [_ALFA] = LAYOUT(
-        KC_ESC, KC_J, KC_K, KC_M, KC_QUOT, KC_MINUS,
-        KC_SCLN, KC_Y, KC_P, KC_L,  KC_DOT, KC_Q,  
-        KC_LSFT, KC_X, KC_B, KC_V, KC_COMMA, KC_Z,
+        _______,KC_J, KC_K, KC_M,  KC_QUOT, KC_MINUS,  
+        _______,KC_Y, KC_P, KC_L,  KC_DOT, KC_Q,   
+        _______,KC_X, KC_B, KC_V,  KC_COMMA, KC_Z,  
           _______,  _______, _______, _______, _______
     ),
     [_NUM] = LAYOUT(
-        KC_BSLS, KC_6, KC_7, KC_8, KC_9, KC_0,
-        KC_EQL, KC_1, KC_2, KC_3, KC_4, KC_5 , 
-        KC_LSFT, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), G(KC_S),
-          HOMER,  _______, _______, _______, _______
+        _______,KC_6, KC_7, KC_8, KC_9, KC_0, 
+        _______,KC_1, KC_2, KC_3, KC_4, KC_5 , 
+        _______,G(KC_Z), G(KC_X), G(KC_C), G(KC_V), G(KC_S), 
+          _______,  _______, _______, _______, _______
+
+
+
     ),
     [_NAV] = LAYOUT(
-        KC_ESC, KC_GRV,      KC_M,       KC_UP,      KC_QUOT,    KC_BSLS,
-        KC_TAB, KC_MINS,     KC_LEFT,    KC_DOWN,    KC_RIGHT,   KC_EQL,
-        KC_LSFT, KC_LBRC,  C(KC_LEFT), C(KC_UP), C(KC_RIGHT), KC_RBRC,
+        _______,KC_GRV,   KC_M,       KC_UP,      KC_QUOT,    KC_BSLS, 
+        _______,KC_MINS,  KC_LEFT,    KC_DOWN,    KC_RIGHT,   KC_EQL,
+        _______,KC_LBRC,  C(KC_LEFT), C(KC_UP), C(KC_RIGHT), KC_RBRC, 
           _______,  _______, _______, _______, KC_LSFT
     )
 };
@@ -106,7 +109,7 @@ void matrix_scan_user(void) {
 
     switch (layer) {
     	case _BASE:
-    		set_led_off;
+    		set_led_yellow;
     		break;
         case _ALFA:
             set_led_blue;
@@ -118,6 +121,7 @@ void matrix_scan_user(void) {
         	set_led_green;
         	break;
         default:
+        set_led_yellow;
             break;
     }
 };

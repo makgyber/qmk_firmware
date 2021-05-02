@@ -13,16 +13,16 @@
 // Apply the modifier on keys that are tapped during a short hold of a modtap
 #define PERMISSIVE_HOLD
 
-// Left-hand home row mods 
-#define SFT_F LSFT_T(KC_F)
+// Left-hand home row mods
+#define CTL_A LCTL_T(KC_A)
 #define ALT_S LALT_T(KC_S)
-#define CTL_D LCTL_T(KC_D)
-#define GUI_V GUI_T(KC_V)
+#define SFT_D LSFT_T(KC_D)
+#define GUI_F LGUI_T(KC_F)
 
 // Right-hand home row mods
-#define GUI_M GUI_T(KC_M)
-#define CTL_K RCTL_T(KC_K)
+#define GUI_J RGUI_T(KC_J)
+#define SFT_K RSFT_T(KC_K)
 #define ALT_L LALT_T(KC_L)
-#define SFT_J LSFT_T(KC_J)
+#define CTL_SCLN RCTL_T(KC_SCLN)
 
-#define COMBO_COUNT 12
+#define COMBO_COUNT 1
