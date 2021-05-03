@@ -59,10 +59,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
     [_NAV] = LAYOUT(
-        _______,KC_GRV,   KC_PRN,       KC_UP,      KC_DEL,    KC_BSLS, 
+        _______,KC_GRV,   QMKBEST,       KC_UP,      KC_DEL,    KC_BSLS, 
         _______,KC_MINS,  KC_LEFT,    KC_DOWN,    KC_RIGHT,   KC_EQL,
         _______,KC_LBRC,  C(KC_LEFT), C(KC_UP), C(KC_RIGHT), KC_RBRC, 
-          KC_LSFT,  KC_ESC, KC_TAB, _______, _______
+          KC_LSFT,  KC_ESC, KC_TAB, HOMER, _______
     )
 };
 
@@ -71,7 +71,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case QMKBEST:
             if (record->event.pressed) {
                 // when keycode QMKBEST is pressed
-                SEND_STRING("QMK is the best thing ever!");
+                SEND_STRING("jon99");
             } else {
                 // when keycode QMKBEST is released
             }
