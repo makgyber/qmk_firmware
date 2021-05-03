@@ -16,7 +16,6 @@
 enum mitosis_layers
 {
   _QWY,
-	_STD,
   _HANDS,
 	_NUM,
 	_FN
@@ -28,25 +27,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWY] = LAYOUT( /* Standard; as compatible with dvorak and qwerty as possible */
     KC_Q,  KC_W,  KC_E,  KC_R,   KC_T,               KC_Y,  KC_U,  KC_I,  KC_O, KC_P,   
     KC_A,    KC_S, KC_D,  KC_F,    KC_G,             KC_H,  KC_J,  KC_K,  KC_L, KC_SCLN,
-    LT(_FN, KC_Z) , KC_X,  KC_C,  KC_V,  KC_B,       KC_N, KC_M, KC_COMM, KC_DOT,  KC_SLSH,
-          DF(_STD),DF(_HANDS), _______,_______,         _______, _______, _______, _______,
-          _______, _______,LT(_NUM,KC_SPC),  GUI_T(KC_ENT),         LSFT_T(KC_SPC), LT(_FN, KC_BSPC),_______,_______
+    KC_Z, KC_X,  KC_C,  KC_V,  KC_B,       KC_N, KC_M, KC_COMM, KC_DOT,  KC_SLSH,
+          DF(_HANDS),_______, _______,OSL(_NUM),         OSL(_NUM), _______, _______, _______,
+          
+          _______, _______,LT(_FN,KC_SPC),  GUI_T(KC_ENT),         LSFT_T(KC_SPC), LT(_FN, KC_BSPC),_______,_______
   ), 
- 
-  [_STD] = LAYOUT( /* Standard; as compatible with dvorak and qwerty as possible */
-    KC_Q,  KC_W,  KC_H,  KC_D,   KC_M,               KC_Y,  KC_F, KC_U,  KC_P, KC_QUOT,
-    KC_A,    KC_S, KC_R,  KC_T,    KC_G,             KC_J,  KC_N, KC_E,  KC_O, KC_I,
-    LT(_FN, KC_Z) , KC_X,  KC_C,  KC_V,  KC_B,         KC_K, KC_L, KC_COMM, KC_DOT,  KC_SLSH,
-          _______,DF(_HANDS), DF(_QWY),_______,         _______, _______, _______, _______,
-          _______, _______,LT(_NUM,KC_SPC),  GUI_T(KC_ENT),         LSFT_T(KC_SPC), LT(_FN, KC_BSPC),_______,_______
-  ),  
 
-  [_HANDS] = LAYOUT( /* Standard; as compatible with dvorak and qwerty as possible */
+  [_HANDS] = LAYOUT( /* hands on layout */
     KC_Q,  KC_C,   KC_H,    KC_P,    KC_V ,         KC_K,   KC_Y,   KC_O , KC_J,    KC_QUOT,
     KC_R,  KC_S,   KC_N,    KC_T,    KC_G,          KC_W,   KC_U,   KC_E,  KC_I, KC_A,
-    LT(_FN, KC_X) , KC_M,   KC_L,    KC_D, KC_B,    KC_Z,   KC_F,   KC_COMM, KC_DOT,  KC_SLSH,
-          DF(_STD), _______,DF(_QWY),_______,         _______, _______, _______, _______,
-          _______, _______,LT(_NUM,KC_SPC),  GUI_T(KC_ENT),         LSFT_T(KC_SPC), LT(_FN, KC_BSPC),_______,_______
+    KC_X , KC_M,   KC_L,    KC_D, KC_B,    KC_Z,   KC_F,   KC_COMM, KC_DOT,  KC_SLSH,
+          DF(_QWY),_______, _______,OSL(_NUM),         OSL(_NUM), _______, _______, _______,
+          _______, _______,LT(_FN,KC_SPC),  GUI_T(KC_ENT),         LSFT_T(KC_SPC), LT(_FN, KC_BSPC),_______,_______
   ),
  
 
@@ -88,17 +80,20 @@ void matrix_scan_user(void) {
     uint8_t layer = biton32(layer_state);
 
     switch (layer) {
-    	case _STD:
-    		set_led_off;
+    	case _QWY:
+    		set_led_cyan;
     		break;
-        case _FN:
-            set_led_blue;
-            break;
-        case _NUM:
-            set_led_red;
-            break;
-        default:
-            break;
+      case _HANDS:
+    		set_led_green;
+    		break;
+      case _FN:
+          set_led_blue;
+          break;
+      case _NUM:
+          set_led_red;
+          break;
+      default:
+          break;
     }
 };
 

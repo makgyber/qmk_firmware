@@ -26,9 +26,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWY] = LAYOUT( /* Standard; as compatible with dvorak and qwerty as possible */
     KC_Q,  KC_W,  KC_E,  KC_R,   KC_T,               KC_Y,  KC_U,  KC_I,  KC_O, KC_P,   
     KC_A,    ALT_S, CTL_D,  SFT_F,    KC_G,         KC_H,  SFT_J,  CTL_K,  ALT_L, KC_SCLN,
-    LT(_FN, KC_Z) , KC_X,  KC_C,  GUI_V,  KC_B,       KC_N, GUI_M, KC_COMM, KC_DOT,  KC_SLSH,
-          _______,_______,_______,_______,         _______, _______, _______, _______,
-          _______, _______,LT(_NUM,KC_QUOT),   GUI_T(KC_ENT),         LT(_FN, KC_SPC), LT(_NUM, KC_BSPC),_______,_______
+    LT(_FN, KC_Z) , KC_X,  KC_C,  GUI_V,  KC_B,       KC_N, GUI_M, KC_COMM, KC_DOT,  KC_ENT,
+          _______,_______,_______,_______,           MO(_NUM), _______, _______, _______,
+          _______, _______,LT(_NUM,KC_QUOT),   GUI_T(KC_ENT),         LSFT_T(KC_SPC), LT(_FN, KC_BSPC),_______,_______
   ), 
  
 
@@ -80,9 +80,8 @@ enum combo_events {
   DOTCOM_TILD,
   QW_ESC,
   QE_TAB,
-  SLSHCLN_ENT,
+  DOTENT_SLSH
 };
-
 const uint16_t PROGMEM lbrc_combo[] = {KC_C, KC_B, COMBO_END};
 const uint16_t PROGMEM min_combo[] = {KC_B, KC_G, COMBO_END};
 const uint16_t PROGMEM grv_combo[] = {KC_R, KC_T, COMBO_END};
@@ -94,7 +93,7 @@ const uint16_t PROGMEM rparen_combo[] = {KC_Y, KC_H, COMBO_END};
 const uint16_t PROGMEM tild_combo[] = {KC_DOT, KC_COMM, COMBO_END};
 const uint16_t PROGMEM esc_combo[] = {KC_W, KC_Q, COMBO_END};
 const uint16_t PROGMEM tab_combo[] = {KC_E, KC_Q, COMBO_END};
-const uint16_t PROGMEM enter_combo[] = {KC_SLSH, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM slsh_combo[] = {KC_ENT, KC_DOT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [VB_LBRC] = COMBO(lbrc_combo, KC_LBRC),
@@ -108,9 +107,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [DOTCOM_TILD] = COMBO(tild_combo, KC_TILD),
   [QW_ESC] = COMBO(esc_combo, KC_ESC),
   [QE_TAB] = COMBO(tab_combo, KC_TAB),
-  [SLSHCLN_ENT] = COMBO(enter_combo, KC_ENT),
+  [DOTENT_SLSH] = COMBO(slsh_combo, KC_SLSH),
 };
-
 
 void matrix_scan_user(void) {
     uint8_t layer = biton32(layer_state);
