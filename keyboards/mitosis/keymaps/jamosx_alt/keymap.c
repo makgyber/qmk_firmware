@@ -21,23 +21,30 @@ enum mitosis_layers
 	_FN
 };
 
+enum custom_keycodes {
+    THIS = SAFE_RANGE,
+    HOMER,
+    ARROW, 
+    DBLARROW, 
+    LOGIN
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWY] = LAYOUT( /* Standard; as compatible with dvorak and qwerty as possible */
     KC_Q,  KC_W,  KC_E,  KC_R,   KC_T,               KC_Y,  KC_U,  KC_I,  KC_O, KC_P,   
     KC_A,    KC_S, KC_D,  KC_F,    KC_G,             KC_H,  KC_J,  KC_K,  KC_L, KC_SCLN,
-    KC_Z, KC_X,  KC_C,  KC_V,  KC_B,       KC_N, KC_M, KC_COMM, KC_DOT,  KC_SLSH,
-          DF(_HANDS),_______, _______,OSL(_NUM),         OSL(_NUM), _______, _______, _______,
+    KC_Z, KC_X,  KC_C,  KC_V,  KC_B,                 KC_N, KC_M, KC_COMM, KC_DOT,  KC_ENT,
+          DF(_HANDS),KC_BSPC, KC_QUOT,OSL(_NUM),         OSL(_NUM), KC_SLSH, KC_LCTL, KC_LALT,
           
-          _______, _______,LT(_FN,KC_SPC),  GUI_T(KC_ENT),         LSFT_T(KC_SPC), LT(_FN, KC_BSPC),_______,_______
+          _______, _______,LT(_FN,KC_SPC),  GUI_T(KC_ENT),         LSFT_T(KC_SPC), LT(_FN, KC_BSPC),_______,LOGIN
   ), 
 
   [_HANDS] = LAYOUT( /* hands on layout */
     KC_Q,  KC_C,   KC_H,    KC_P,    KC_V ,         KC_K,   KC_Y,   KC_O , KC_J,    KC_QUOT,
     KC_R,  KC_S,   KC_N,    KC_T,    KC_G,          KC_W,   KC_U,   KC_E,  KC_I, KC_A,
     KC_X , KC_M,   KC_L,    KC_D, KC_B,    KC_Z,   KC_F,   KC_COMM, KC_DOT,  KC_SLSH,
-          DF(_QWY),_______, _______,OSL(_NUM),         OSL(_NUM), _______, _______, _______,
+          DF(_QWY),_______, KC_BSPC,OSL(_NUM),         OSL(_NUM), _______, _______, _______,
           _______, _______,LT(_FN,KC_SPC),  GUI_T(KC_ENT),         LSFT_T(KC_SPC), LT(_FN, KC_BSPC),_______,_______
   ),
  
@@ -55,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  _______, KC_UP, _______, KC_GRV,       KC_BSLS, KC_WH_L, KC_MS_UP, KC_DEL, KC_SLSH,
     KC_TAB,  KC_LEFT, KC_DOWN, KC_RIGHT, KC_MINS,       KC_EQL, KC_MS_L, KC_MS_D, KC_MS_R, KC_QUOT,
     KC_LSFT, C(KC_LEFT), C(KC_UP), C(KC_RIGHT), KC_LBRC,       KC_RBRC, KC_BTN1, KC_BTN2, KC_9, KC_ENT,
-             _______, _______, _______, _______,       _______, _______, _______, _______,
+             THIS, ARROW, DBLARROW, HOMER,       _______, _______, _______, _______,
              _______, _______, _______, _______,       _______, _______, _______, _______
   ), 
 
@@ -97,3 +104,48 @@ void matrix_scan_user(void) {
     }
 };
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case THIS:
+            if (record->event.pressed) {
+                // when keycode QMKBEST is pressed
+                SEND_STRING("$this->");
+            } else {
+                // when keycode QMKBEST is released
+            }
+            break;
+        case HOMER:
+            if (record->event.pressed) {
+                // when keycode QMKURL is pressed
+                SEND_STRING("~/");
+            } else {
+                // when keycode QMKURL is released
+            }
+            break;
+        case ARROW:
+            if (record->event.pressed) {
+                // when keycode QMKURL is pressed
+                SEND_STRING("->");
+            } else {
+                // when keycode QMKURL is released
+            }
+            break;
+        case DBLARROW:
+            if (record->event.pressed) {
+                // when keycode QMKURL is pressed
+                SEND_STRING("=>");
+            } else {
+                // when keycode QMKURL is released
+            }
+            break;
+        case LOGIN:
+            if (record->event.pressed) {
+                // when keycode QMKURL is pressed
+                SEND_STRING("jon99");
+            } else {
+                // when keycode QMKURL is released
+            }
+            break;
+    }
+    return true;
+}
