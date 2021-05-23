@@ -17,6 +17,7 @@ enum mitosis_layers
 {
   _QWY,
   _HANDS,
+  _LEFT,
 	_NUM,
 	_FN
 };
@@ -35,15 +36,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q,  KC_W,  KC_E,  KC_R,   KC_T,               KC_Y,  KC_U,  KC_I,  KC_O, KC_P,   
     KC_A,    KC_S, KC_D,  KC_F,    KC_G,             KC_H,  KC_J,  KC_K,  KC_L, KC_SCLN,
     KC_Z, KC_X,  KC_C,  KC_V,  KC_B,                 KC_N, KC_M, KC_COMM, KC_DOT,  KC_ENT,
-          _______,KC_LCTL, LT(_FN, KC_BSPC),GUI_T(KC_ENT),          LSFT_T(KC_SPC), LT(_NUM, KC_BSPC), KC_LALT,_______,
+          _______,KC_LCTL, LT(_FN, KC_BSPC),GUI_T(KC_ENT),          LSFT_T(KC_SPC), LT(_NUM, KC_BSPC), KC_LALT,DF(_HANDS),
           
-          _______, _______,_______, OSL(_HANDS),          OSL(_HANDS), _______,_______,_______
+          _______, _______,_______, _______,           _______,_______,_______,_______
   ), 
 
   [_HANDS] = LAYOUT( /* hands on layout */
-    KC_P ,  KC_O,  KC_I,   KC_U,   KC_Y,           KC_T,  KC_R,   KC_E , KC_W,  KC_Q, 
-    KC_SCLN,  KC_L,   KC_K,    KC_J,    KC_H,         KC_G, KC_F,   KC_D,   KC_S, KC_A,
-    KC_LSFT , KC_DOT,    KC_COMM,    KC_M, KC_N,           KC_B , KC_V,   KC_C, KC_X, KC_Z,  
+    _______, _______,_______, _______,_______,           KC_F, KC_R,  KC_U, KC_O,    KC_P,   
+    KC_LALT, KC_LCTL,KC_LGUI, KC_LSFT,_______,           KC_G,  KC_N ,  KC_E,  KC_I,  KC_A, 
+    _______, _______,_______, _______,_______,           KC_T,  KC_H,  KC_C, KC_S, KC_ENT,
+          _______, _______,_______, _______,          _______, _______,_______,_______,
+          DF(_QWY),_______, _______,_______,            LT(_LEFT, KC_SPC),_______,_______,_______
+  ),
+
+  [_LEFT] = LAYOUT( /* hands on layout */
+    _______, _______,_______, _______,_______,           KC_Y,   KC_V,  KC_D , KC_W,  KC_Q, 
+    KC_LALT, KC_LCTL,KC_LGUI, KC_LSFT,_______,           KC_X,  KC_J,  KC_K,  KC_L, KC_SCLN,
+    _______, _______,_______, _______,_______,           KC_B, KC_M, KC_COMM, KC_DOT,  KC_Z,  
           _______, _______,_______, _______,          _______, _______,_______,_______,
           _______, _______,_______, _______,          _______, _______,_______,_______
   ),
@@ -94,6 +103,9 @@ void matrix_scan_user(void) {
       case _HANDS:
     		set_led_green;
     		break;
+    case _LEFT:
+          set_led_yellow;
+          break;
       case _FN:
           set_led_blue;
           break;
