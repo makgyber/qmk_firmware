@@ -39,14 +39,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //              _______,      _______, _______, _______, _______
     //     ),
 
-    [_BASE] = LAYOUT(
-        KC_BSPC,    KC_N,   KC_I,   KC_O,   KC_U,     KC_J,
-        OSL(_ALFA), KC_A,   KC_E,   KC_R,   KC_S, KC_G,
-        OSL(_NUM),  KC_T,   KC_H,   KC_C,   KC_W,      KC_F,
-               LSFT_T(KC_SPC), GUI_T(KC_ENT),      OSL(MOD_LCTL),   OSL(MOD_LALT),  OSL(_NAV)
+    // [_BASE] = LAYOUT(
+    //     KC_BSPC,    KC_N,   KC_I,   KC_O,   KC_U,     KC_J,
+    //     OSL(_ALFA), KC_A,   KC_E,   KC_S,   KC_R,    KC_G,
+    //     OSL(_NUM),  KC_T,   KC_H,   KC_C,   KC_W,      KC_F,
+    //            LSFT_T(KC_SPC),OSL(_NAV), OSL(MOD_LCTL), OSL(MOD_LALT),   GUI_T(KC_ENT)
+    // ),
+      [_BASE] = LAYOUT(
+        KC_BSPC,    KC_F,   KC_U, KC_I,   KC_O,        KC_J,
+        OSL(_NAV), KC_G,   KC_S,   KC_E,   KC_R,      KC_A, 
+        OSL(_NUM),  KC_N,   KC_T,   KC_H,   KC_C,   KC_W,      
+               LT(_ALFA,KC_SPC), LSFT_T(KC_BSPC), OSM(MOD_LCTL), OSM(MOD_LALT),   GUI_T(KC_ENT)
     ),
     [_ALFA] = LAYOUT(
-        _______,KC_D, KC_K, KC_M,  KC_QUOT, KC_MINUS,  
+        _______, KC_K, KC_M, KC_D,  KC_QUOT, KC_MINUS,  
         _______,KC_Y, KC_P, KC_L,  KC_DOT, KC_Q,   
         _______,KC_X, KC_B, KC_V,  KC_COMMA, KC_Z,  
           KC_LSFT,  _______, _______, _______, _______
@@ -62,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,KC_GRV,   QMKBEST,       KC_UP,      KC_DEL,    KC_BSLS, 
         _______,KC_MINS,  KC_LEFT,    KC_DOWN,    KC_RIGHT,   KC_EQL,
         _______,KC_LBRC,  C(KC_LEFT), C(KC_UP), C(KC_RIGHT), KC_RBRC, 
-          KC_LSFT,  KC_ESC, KC_TAB, HOMER, _______
+          KC_LSFT,  KC_ESC, KC_TAB, HOMER, KC_SLSH
     )
 };
 
