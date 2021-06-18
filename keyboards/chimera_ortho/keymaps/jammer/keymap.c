@@ -20,9 +20,10 @@ enum chimera_ortho_layers {
 #define KC_SYMB TG(_SYMBOLS)
 #define KC_NAVZ LT(_NAV,KC_Z)
 #define KC_NAVSL LT(_NAV,KC_SLSH)
-#define KC_SBRC LT(_SYMBOLS, KC_RBRC)
+#define KC_SBRC LT(_CAPS, KC_RBRC)
 #define KC_NPLBR LT(_NUMPAD, KC_LBRC)
 #define KC_MINLH LT(_CAPS, KC_MINS)
+#define KC_EQLRH LT(_SYMBOLS, KC_EQL)
 #define KC_SFSP MT(MOD_RSFT, KC_SPC)
 #define KC_SPFN LT(_NUMPAD, KC_BSPC)
 #define KC_SPCTL MT(MOD_LCTL, KC_SPC)
@@ -50,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-------+-------+-------+-------+-------+-------+-------.     ,-------+-------+-------+-------+-------+-------+-------.
      KC_MESC, KC_Q  , KC_W  , KC_E  , KC_R  , KC_T  ,KC_GRV,      KC_BSLS, KC_Y  , KC_U  , KC_I  , KC_O  , KC_P  ,KC_BSPC,
   //|-------+-------+-------+-------+-------+-------+-------|     |-------+-------+-------+-------+-------+-------+-------|
-     KC_TBALT,  KC_A,   KC_S,   KC_D, KC_F  , KC_G  ,KC_MINLH,      KC_EQL, KC_H  , KC_J  , KC_K  , KC_L  ,KC_SCLN,KC_QUOT,
+     KC_TBALT,  KC_A,   KC_S,   KC_D, KC_F  , KC_G  ,KC_MINLH,      KC_EQLRH, KC_H  , KC_J  , KC_K  , KC_L  ,KC_SCLN,KC_QUOT,
   //|-------+-------+-------+-------+-------+-------+-------|     |-------+-------+-------+-------+-------+-------+-------|
      KC_LSFT,KC_NAVZ, KC_X  , KC_C  , KC_V  , KC_B  ,KC_NPLBR,      KC_SBRC, KC_N  , KC_M  ,KC_COMM,KC_DOT,KC_NAVSL,KC_ENT,
   //|-------+-------+-------+-------+-------+-------+-------|     |-------+-------+-------+-------+-------+-------+-------|
@@ -60,11 +61,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_CAPS] = LAYOUT(
   //,-------+-------+-------+-------+-------+-------+-------.     ,-------+-------+-------+-------+-------+-------+-------.
-     KC_BSPC,  KC_P ,  KC_O ,  KC_I ,  KC_U ,  KC_Y ,_______,      _______,_______,_______,_______,_______,_______,_______,
+     KC_BSPC,  KC_P ,  KC_O ,  KC_I ,  KC_U ,  KC_Y ,_______,      _______,KC_T,KC_R,KC_E,KC_W,KC_Q,_______,
   //|-------+-------+-------+-------+-------+-------+-------|     |-------+-------+-------+-------+-------+-------+-------|
-     KC_QUOT,KC_SCLN,  KC_L ,  KC_K ,  KC_J ,  KC_H ,_______,      _______,_______,_______,_______,_______,_______,_______,
+     KC_QUOT,KC_SCLN,  KC_L ,  KC_K ,  KC_J ,  KC_H ,_______,      _______,KC_G,KC_F,KC_D,KC_S,KC_A,_______,
   //|-------+-------+-------+-------+-------+-------+-------|     |-------+-------+-------+-------+-------+-------+-------|
-     KC_SCOF,KC_SLSH, KC_DOT,KC_COMM,  KC_M ,  KC_N ,_______,      _______,_______,_______,_______,_______,_______,_______,
+     KC_SCOF,KC_SLSH, KC_DOT,KC_COMM,  KC_M ,  KC_N ,_______,      _______,KC_B,KC_V,KC_C,KC_X,KC_Z,_______,
   //|-------+-------+-------+-------+-------+-------+-------|     |-------+-------+-------+-------+-------+-------+-------|
                                      _______,_______,                      _______,_______
   // \------------------------------+-------+-------+------/       \------+-------+-------+------------------------------/

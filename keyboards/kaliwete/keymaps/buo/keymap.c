@@ -39,36 +39,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //              _______,      _______, _______, _______, _______
     //     ),
 
-    // [_BASE] = LAYOUT(
-    //     KC_BSPC,    KC_N,   KC_I,   KC_O,   KC_U,     KC_J,
-    //     OSL(_ALFA), KC_A,   KC_E,   KC_S,   KC_R,    KC_G,
-    //     OSL(_NUM),  KC_T,   KC_H,   KC_C,   KC_W,      KC_F,
-    //            LSFT_T(KC_SPC),OSL(_NAV), OSL(MOD_LCTL), OSL(MOD_LALT),   GUI_T(KC_ENT)
-    // ),
-      [_BASE] = LAYOUT(
-        KC_ESC,    KC_F, KC_R,  KC_U, KC_O,    KC_P,
-        LT(_NUM, KC_TAB), KC_G,  KC_N ,  KC_E,  KC_I,  KC_A,
-        GUI_T(KC_ENT),  KC_T,  KC_H,  KC_C, KC_S, KC_SLSH,     
-               LT(_ALFA,KC_SPC), LSFT_T(KC_BSPC), OSM(MOD_LCTL), OSM(MOD_LALT),   LT(_NAV, KC_QUOT)
+    [_BASE] = LAYOUT(
+        _______,KC_F,  KC_D, KC_I, KC_N, KC_G, 
+        OSL(_ALFA),KC_A,  KC_T, KC_H, KC_E, KC_S,
+        OSL(_NUM),KC_C,  KC_W, KC_R, KC_O,  KC_U, 
+               LT(_NAV, KC_ENT),      KC_LCTL,   KC_LGUI,   GUI_T(KC_BSPC), LSFT_T(KC_SPC)
     ),
     [_ALFA] = LAYOUT(
-        _______, KC_Y,   KC_V,  KC_D , KC_W,  KC_Q,  
-        _______,KC_X,  KC_J,  KC_K,  KC_L, KC_SCLN,  
-        _______,KC_B, KC_M, KC_COMM, KC_DOT,  KC_Z,  
-          KC_LSFT,  _______, _______, _______, _______
+        _______,KC_J, KC_K, KC_M,  KC_QUOT, KC_MINUS,  
+        _______,KC_Y, KC_P, KC_L,  KC_DOT, KC_Q,   
+        _______,KC_X, KC_B, KC_V,  KC_COMMA, KC_Z,  
+          _______,  _______, _______, _______, _______
     ),
     [_NUM] = LAYOUT(
         _______,KC_6, KC_7, KC_8, KC_9, KC_0, 
         _______,KC_1, KC_2, KC_3, KC_4, KC_5 , 
-        _______, G(KC_V), G(KC_C), G(KC_X) ,G(KC_S), G(KC_Z), 
-          KC_LSFT,  _______, _______, _______, _______
+        _______,G(KC_Z), G(KC_X), G(KC_C), G(KC_V), G(KC_S), 
+          _______,  _______, _______, _______, _______
+
+
 
     ),
     [_NAV] = LAYOUT(
-        _______,KC_GRV,   QMKBEST,       KC_UP,      KC_DEL,    KC_BSLS, 
+        _______,KC_GRV,   KC_M,       KC_UP,      KC_QUOT,    KC_BSLS, 
         _______,KC_MINS,  KC_LEFT,    KC_DOWN,    KC_RIGHT,   KC_EQL,
         _______,KC_LBRC,  C(KC_LEFT), C(KC_UP), C(KC_RIGHT), KC_RBRC, 
-          KC_LSFT,  KC_ESC, KC_TAB, HOMER, KC_SLSH
+          _______,  _______, _______, _______, KC_LSFT
     )
 };
 
@@ -77,7 +73,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case QMKBEST:
             if (record->event.pressed) {
                 // when keycode QMKBEST is pressed
-                SEND_STRING("jon99");
+                SEND_STRING("QMK is the best thing ever!");
             } else {
                 // when keycode QMKBEST is released
             }
@@ -113,7 +109,7 @@ void matrix_scan_user(void) {
 
     switch (layer) {
     	case _BASE:
-    		set_led_off;
+    		set_led_yellow;
     		break;
         case _ALFA:
             set_led_blue;
@@ -125,7 +121,7 @@ void matrix_scan_user(void) {
         	set_led_green;
         	break;
         default:
-            set_led_off;
+        set_led_yellow;
             break;
     }
 };
